@@ -1,20 +1,14 @@
-import { Button, MantineProvider, Title, createTheme } from "@mantine/core";
-import { useState } from "react";
+import { MantineProvider, createTheme } from "@mantine/core";
+import { Editor } from "./components/Editor/Editor";
 
 const theme = createTheme({
 	/** Put your mantine theme override here */
 });
 
 export const App = () => {
-	const [count, setCount] = useState(0);
-
 	return (
 		<MantineProvider theme={theme}>
-			<Title>Vite + React</Title>
-
-			<Button onClick={() => setCount((count) => count + 1)}>
-				count is {count}
-			</Button>
+			<Editor />
 		</MantineProvider>
 	);
 };
