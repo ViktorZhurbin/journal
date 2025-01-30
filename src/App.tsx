@@ -1,15 +1,7 @@
 import { MantineProvider, createTheme } from "@mantine/core";
-import { RouterProvider, createRouter } from "@tanstack/react-router";
-import { routeTree } from "./routeTree.gen";
-
-const router = createRouter({ routeTree });
-
-// Register the router instance for type safety
-declare module "@tanstack/react-router" {
-	interface Register {
-		router: typeof router;
-	}
-}
+import { Route, Switch } from "wouter";
+import { Entries } from "./pages/Entries";
+import { Entry } from "./pages/Entry";
 
 const theme = createTheme({
 	/** Put your mantine theme override here */
@@ -18,7 +10,15 @@ const theme = createTheme({
 export const App = () => {
 	return (
 		<MantineProvider theme={theme}>
-			<RouterProvider router={router} />
+			<Switch>
+				<Route path="/" component={Entries} />
+				<Route path="/:entryId">
+					{(params) => <Entry entryId={params.entryId} />}
+				</Route>
+
+				{/* Default route in a switch */}
+				<Route>404: No such page!</Route>
+			</Switch>
 		</MantineProvider>
 	);
 };

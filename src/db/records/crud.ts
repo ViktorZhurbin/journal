@@ -1,13 +1,17 @@
 import { id } from "@instantdb/react";
 import { db } from "../instant";
 
-function addRecord(text: string) {
+function addRecord(text = "") {
+	const recordId = id();
+
 	db.transact(
-		db.tx.records[id()].update({
+		db.tx.records[recordId].update({
 			text,
 			createdAt: new Date().toISOString(),
-		})
+		}),
 	);
+
+	return recordId;
 }
 
 function updateRecord(recordId: string, text: string) {
@@ -15,7 +19,7 @@ function updateRecord(recordId: string, text: string) {
 		db.tx.records[recordId].update({
 			text,
 			updatedAt: new Date().toISOString(),
-		})
+		}),
 	);
 }
 

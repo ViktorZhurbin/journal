@@ -1,4 +1,3 @@
-import { useLocalStorage } from "@mantine/hooks";
 import { Link, RichTextEditor } from "@mantine/tiptap";
 import Highlight from "@tiptap/extension-highlight";
 import TextAlign from "@tiptap/extension-text-align";
@@ -16,17 +15,18 @@ const extensions = [
 		types: ["heading", "paragraph"],
 	}),
 ];
-export const Editor = () => {
-	const [value, setValue] = useLocalStorage({
-		key: "draftEntry",
-		defaultValue: "",
-	});
 
+type EditorProps = {
+	content: string;
+	onUpdate: (text: string) => void;
+};
+
+export const Editor = ({ content = "", onUpdate }: EditorProps) => {
 	const editor = useEditor({
 		extensions,
-		content: value,
+		content: content,
 		onUpdate: ({ editor }) => {
-			setValue(editor.getHTML());
+			onUpdate(editor.getHTML());
 		},
 	});
 
