@@ -1,10 +1,10 @@
 import { Editor } from "../components/Editor/Editor";
 import { db } from "../db/instant";
-import { updateRecord } from "../db/records/crud";
+import { updateEntry } from "../db/records/crud";
 
 export function Entry({ entryId }: { entryId: string }) {
 	const { isLoading, error, data } = db.useQuery({
-		records: {
+		entries: {
 			$: {
 				where: {
 					id: entryId,
@@ -21,10 +21,10 @@ export function Entry({ entryId }: { entryId: string }) {
 		return <div>Error querying data: {error.message}</div>;
 	}
 
-	const { text } = data.records[0] ?? {};
+	const { text } = data.entries[0] ?? {};
 
 	const handleUpdate = (text: string) => {
-		updateRecord(entryId, text);
+		updateEntry(entryId, text);
 	};
 
 	return (

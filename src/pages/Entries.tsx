@@ -3,7 +3,7 @@ import { CreateButton } from "../components/CreateButton/CreateButton";
 import { db } from "../db/instant";
 
 export function Entries() {
-	const { isLoading, error, data } = db.useQuery({ records: {} });
+	const { isLoading, error, data } = db.useQuery({ entries: {} });
 	if (isLoading) {
 		return "Loading...";
 	}
@@ -12,12 +12,12 @@ export function Entries() {
 		return <div>Error querying data: {error.message}</div>;
 	}
 
-	const { records } = data;
+	const { entries } = data;
 
 	return (
 		<div>
-			{records.map((record) => (
-				<div key={record.id}>{record.text}</div>
+			{entries.map((entry) => (
+				<div key={entry.id}>{entry.text}</div>
 			))}
 			<Affix position={{ bottom: 20, right: 20 }}>
 				<CreateButton />
