@@ -4,21 +4,21 @@ import { Entries } from "./pages/Entries";
 import { Entry } from "./pages/Entry";
 
 const theme = createTheme({
-	/** Put your mantine theme override here */
+  /** Put your mantine theme override here */
 });
 
 export const App = () => {
-	return (
-		<MantineProvider theme={theme}>
-			<Switch>
-				<Route path="/" component={Entries} />
-				<Route path="/:entryId">
-					{(params) => <Entry entryId={params.entryId} />}
-				</Route>
+  return (
+    <MantineProvider theme={theme}>
+      <Switch>
+        <Route path="/" component={Entries} />
+        <Route path="/:entryId">
+          {(params) => <Entry entryId={params.entryId} />}
+        </Route>
 
-				{/* Default route in a switch */}
-				<Route>404: No such page!</Route>
-			</Switch>
-		</MantineProvider>
-	);
+        {/* Default route in a switch */}
+        <Route>404: No such page!</Route>
+      </Switch>
+    </MantineProvider>
+  );
 };

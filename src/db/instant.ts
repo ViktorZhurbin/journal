@@ -5,13 +5,13 @@ const APP_ID = "9e68910e-a079-4b1e-9e52-571b0c55eebe";
 
 // Optional: Declare your schema!
 const schema = i.schema({
-	entities: {
-		entries: i.entity({
-			text: i.string(),
-			createdAt: i.date(),
-			updatedAt: i.date(),
-		}),
-	},
+  entities: {
+    entries: i.entity({
+      text: i.string(),
+      createdAt: i.date(),
+      updatedAt: i.date(),
+    }),
+  },
 });
 
 type Entry = InstaQLEntity<typeof schema, "entries">;
