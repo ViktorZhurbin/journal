@@ -9,7 +9,7 @@ const theme = createTheme({
 
 export const App = () => {
   return (
-    <MantineProvider theme={theme}>
+    <MantineProvider theme={theme} defaultColorScheme="auto">
       <Switch>
         <Route path="/" component={Entries} />
         <Route path="/:entryId">

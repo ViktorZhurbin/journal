@@ -1,3 +1,30 @@
+.buttonRoot {
+  --button-max-height: 160px;
+  --button-padding-y: 16px;
+
+  box-sizing: border-box;
+  height: max-content;
+  max-height: var(--button-max-height);
+  padding-block: var(--button-padding-y);
+}
+
 .buttonLabel {
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 12px;
+  max-height: calc(var(--button-max-height) - var(--button-padding-y) * 2);
+}
+
+.editorRoot {
+  border: unset;
+
+  :global(.tiptap.ProseMirror) {
+    padding: 0;
+  }
+}
+
+.editorContent {
+  background-color: transparent;
 }

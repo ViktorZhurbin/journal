@@ -1,3 +1,4 @@
+import { Flex } from "@mantine/core";
 import { Editor } from "../components/Editor/Editor";
 import { db } from "../db/instant";
 import { updateEntry } from "../db/records/crud";
@@ -28,8 +29,8 @@ export function Entry({ entryId }: { entryId: string }) {
   };
 
   return (
-    <div>
+    <Flex flex={1} justify={"center"}>
       <Editor content={text} onUpdate={handleUpdate} />
-    </div>
+    </Flex>
   );
 }
