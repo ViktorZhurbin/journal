@@ -1,6 +1,7 @@
-import { Affix } from "@mantine/core";
+import { Affix, Stack } from "@mantine/core";
 import { CreateButton } from "../components/CreateButton/CreateButton";
 import { db } from "../db/instant";
+import { EntryItem } from "./entries/EntryItem/EntryItem";
 
 export function Entries() {
 	const { isLoading, error, data } = db.useQuery({ entries: {} });
@@ -12,13 +13,13 @@ export function Entries() {
 		return <div>Error querying data: {error.message}</div>;
 	}
 
-	const { entries } = data;
-
 	return (
 		<div>
-			{entries.map((entry) => (
-				<div key={entry.id}>{entry.text}</div>
-			))}
+			<Stack gap="sm">
+				{data.entries.map((entry) => (
+					<EntryItem key={entry.id} entry={entry} />
+				))}
+			</Stack>
 			<Affix position={{ bottom: 20, right: 20 }}>
 				<CreateButton />
 			</Affix>
