@@ -1,0 +1,6 @@
+.wrapper {
+  display: grid;
+  gap: 8px;
+  grid-template-rows: auto 1fr;
+  flex-grow: 1;
+}

@@ -1,7 +1,7 @@
 import { MantineProvider, createTheme } from "@mantine/core";
 import { Route, Switch } from "wouter";
-import { Entries } from "./pages/Entries";
-import { Entry } from "./pages/Entry";
+import { Entry } from "./pages/Entry/Entry";
+import { Entries } from "./pages/entries/Entries";
 
 const theme = createTheme({
   /** Put your mantine theme override here */

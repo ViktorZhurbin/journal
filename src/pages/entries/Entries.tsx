@@ -1,7 +1,7 @@
 import { Affix, Stack } from "@mantine/core";
-import { CreateButton } from "../components/CreateButton/CreateButton";
-import { db } from "../db/instant";
-import { EntryItem } from "./entries/EntryItem/EntryItem";
+import { CreateButton } from "../../components/CreateButton/CreateButton";
+import { db } from "../../db/instant";
+import { EntryItem } from "./EntryItem/EntryItem";
 
 export function Entries() {
   const { isLoading, error, data } = db.useQuery({ entries: {} });
