@@ -1,10 +1,10 @@
-import { RichTextEditor, Link } from "@mantine/tiptap";
+import { useLocalStorage } from "@mantine/hooks";
+import { Link, RichTextEditor } from "@mantine/tiptap";
+import Highlight from "@tiptap/extension-highlight";
+import TextAlign from "@tiptap/extension-text-align";
+import Underline from "@tiptap/extension-underline";
 import { useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import Highlight from "@tiptap/extension-highlight";
-import Underline from "@tiptap/extension-underline";
-import TextAlign from "@tiptap/extension-text-align";
-import { useState } from "react";
 
 const extensions = [
 	StarterKit,
@@ -16,9 +16,11 @@ const extensions = [
 		types: ["heading", "paragraph"],
 	}),
 ];
-
 export const Editor = () => {
-	const [value, setValue] = useState("");
+	const [value, setValue] = useLocalStorage({
+		key: "draftEntry",
+		defaultValue: "",
+	});
 
 	const editor = useEditor({
 		extensions,

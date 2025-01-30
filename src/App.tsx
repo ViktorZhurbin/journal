@@ -1,5 +1,15 @@
 import { MantineProvider, createTheme } from "@mantine/core";
-import { Editor } from "./components/Editor/Editor";
+import { RouterProvider, createRouter } from "@tanstack/react-router";
+import { routeTree } from "./routeTree.gen";
+
+const router = createRouter({ routeTree });
+
+// Register the router instance for type safety
+declare module "@tanstack/react-router" {
+	interface Register {
+		router: typeof router;
+	}
+}
 
 const theme = createTheme({
 	/** Put your mantine theme override here */
@@ -8,7 +18,7 @@ const theme = createTheme({
 export const App = () => {
 	return (
 		<MantineProvider theme={theme}>
-			<Editor />
+			<RouterProvider router={router} />
 		</MantineProvider>
 	);
 };
